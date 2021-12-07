@@ -15,6 +15,7 @@ from typing import Optional, List, Dict
 from .nem_objects import NEMFile, HeaderRecord, NmiDetails
 from .nem_objects import Reading, BasicMeterData, IntervalRecord, EventRecord
 from .nem_objects import B2BDetails12, B2BDetails13
+from smart_open import open
 
 log = logging.getLogger(__name__)
 
@@ -36,6 +37,7 @@ def read_nem_file(file_path: str, ignore_missing_header=False) -> NEMFile:
 
     _, file_extension = os.path.splitext(file_path)
     if file_extension.lower() == ".zip":
+        log.warn("Not Updated for s3 yet")
         log.debug("Extracting zip file")
         with zipfile.ZipFile(file_path, "r") as archive:
             for csv_file in archive.namelist():

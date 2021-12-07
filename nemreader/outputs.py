@@ -13,6 +13,7 @@ import pandas as pd
 from .nem_objects import Reading
 from .nem_reader import read_nem_file
 from .split_days import split_multiday_reads
+from smart_open import open
 
 log = logging.getLogger(__name__)
 
